@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>prototype</title>
+</head>
+<body>
+  <h1>Mira en la consola :P</h1>
+  <script>
+    // ================  Un objeto comun y corriente ================
+    // const goku = { name: 'Goku' }
+    // goku.saludar = function () { console.log(`Mi nombre es ${this.name}`) }
+    // goku.saludar()
+
+    // const gohan = { name: 'Gohan' }
+    // gohan.saludar = function () { console.log(`Mi nombre es ${this.name}`) }
+    // gohan.saludar()
+
+    // ================  Seamos mas eficientes  ================
+    // function Hero(name) {
+    //   const hero = { name }
+    //   hero.saludar = function () { console.log(`Mi nombre es ${this.name}`) }
+    //   return hero
+    // }
+
+    // const goku = Hero('Goku')
+    // goku.saludar()
+    // const gohan = Hero('Gohan')
+    // gohan.saludar()
+
+    // ================  Mas eficientes para no llamar la funcion
+    // cada vez que se crea un hero ================
+    // const heroMethods = {
+    //   saludar: function () { console.log(`Mi nombre es ${this.name}`) }
+    // }
+    // function Hero(name) {
+    //   const hero = { name }
+    //   hero.saludar = heroMethods.saludar
+    //   return hero
+    // }
+
+    // const goku = Hero('Goku')
+    // goku.saludar()
+    // const gohan = Hero('Gohan')
+    // gohan.saludar()
+
+    // ================  Object.create  ================
+    // const heroMethods = {
+    //   saludar: function () { console.log(`Mi nombre es ${this.name}`) }
+    // }
+    // function Hero(name) {
+    //   const hero = Object.create(heroMethods)
+    //   hero.name = name
+    //   return hero
+    // }
+
+    // const goku = Hero('Goku')
+    // goku.saludar()
+    // const gohan = Hero('Gohan')
+    // gohan.saludar()
+
+    // ================  Los metodos de hero dentro de Hero  ================
+    // function Hero(name) {
+    //   const hero = Object.create(Hero.prototype)
+    //   hero.name = name
+    //   return hero
+    // }
+
+    // Hero.prototype.saludar = function () {
+    //   console.log(`Mi nombre es ${this.name}`)
+    // }
+
+    // const goku = Hero('Goku')
+    // goku.saludar()
+    // const gohan = Hero('Gohan')
+    // gohan.saludar()
+
+    // =======  new es azucar para llevar Hero.prototype al objeto  =========
+    function Hero(name) {
+      this.name = name
+    }
+
+    Hero.prototype.saludar = function () {
+      console.log(`Mi nombre es ${this.name}`)
+    }
+
+    const goku = new Hero('Goku')
+    goku.saludar()
+    const gohan = new Hero('Gohan')
+    gohan.saludar()
+
+    </script>
+</body>
+</html>
