@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Proxy</title>
+</head>
+<body>
+  <h1>Mira la consola</h1>
+  <script src="https://unpkg.com/fast-levenshtein@2.0.6/levenshtein.js"></script>
+  <script>
+    // proxy es parecido a getters y setters
+
+    // interceptemos llamadas para leer una propiedad
+    // si la propiedad existe la regresamos,
+    // si no existe, sugerimos una similar
+    // para eso usamos el algoritmo Levenshtein.
+    const target = {
+      red: 'rojo',
+      blue: 'azul',
+      green: 'verde',
+    }
+
+    const handler = {
+      get(obj, prop) {
+        if (prop in obj) {
+          return obj[prop]
+        }
+        
+        const suggestion = Object.keys(target).find(key => {
+          return Levenshtein.get(key, prop) <= 3
+        })
+
+        if (suggestion) {
+          console.log(`${prop} no se encontro, tal vez ${suggestion}?`)
+        }
+
+        return obj[prop]
+      }
+    }
+
+    const p = new Proxy(target, handler)
+    // p.red
+    // p.ree
+  </script>
+</body>
+</html>
