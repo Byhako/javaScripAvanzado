@@ -18,7 +18,6 @@ class AutoPause {
 
   handlerIntersection(entries) {
     const entry = entries[0]
-    console.log(entry)
 
     if (entry.intersectionRatio >= this.threshold) {
       this.player.play()
