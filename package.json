@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "live-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "parcel": "parcel index.html typeScript/*.html",
+    "clear": "rm -rf .cache dist"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,11 @@
   },
   "homepage": "https://github.com/Byhako/javaScripAvanzado#readme",
   "devDependencies": {
-    "live-server": "^1.2.1"
-  }
+    "live-server": "^1.2.1",
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^3.7.4"
+  },
+  "browserslist": [
+    "last 1 Chrome version"
+  ]
 }
